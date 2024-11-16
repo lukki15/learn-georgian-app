@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-target
-          path: build/linux/x64/release/bundle/learn_georgian_app
+          path: build/linux/x64/release/bundle/
