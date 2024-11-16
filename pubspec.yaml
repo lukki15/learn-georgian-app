@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fluttertoast: ^8.2.8
+  http: ^1.2.2
+  stroke_order_animator: ^3.3.0
 
 dev_dependencies:
   flutter_test:
