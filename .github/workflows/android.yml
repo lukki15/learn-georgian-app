@@ -21,11 +21,11 @@ jobs:
           cache: true
       - run: flutter --version
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: "17"
-          distribution: "adopt"
+          java-version: 21
+          distribution: adopt
 
       - name: Clone repository
         uses: actions/checkout@v4
