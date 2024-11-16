@@ -33,3 +33,11 @@ jobs:
       - run: flutter pub get
       - run: flutter build apk
       - run: flutter build appbundle
+
+      - name: Archive result
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-target
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab 
