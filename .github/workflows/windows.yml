@@ -14,9 +14,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -24,5 +21,14 @@ jobs:
           cache: true
       - run: flutter --version
 
+      - name: Clone repository
+        uses: actions/checkout@v4
+
       - run: flutter pub get
       - run: flutter build windows
+
+      - name: Archive result
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-target
+          path: build\windows\x64\runner\Release\learn_georgian_app.exe
