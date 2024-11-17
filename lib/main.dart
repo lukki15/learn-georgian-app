@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart' as http;
 import 'package:stroke_order_animator/stroke_order_animator.dart';
+import 'package:learn_georgian_app/stroke_order_values.dart';
 
 void main() {
   runApp(App());
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,14 +22,13 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  final _httpClient = http.Client();
-  final _textController = TextEditingController();
-
+class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   StrokeOrderAnimationController? _completedController;
   late Future<StrokeOrderAnimationController> _animationController;
 
@@ -35,35 +36,44 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _animationController = _loadStrokeOrder('永');
-    _animationController.then((a) => _completedController = a);
+    _animationController = _loadStrokeOrder();
   }
 
   @override
   void dispose() {
-    _httpClient.close();
     _completedController?.dispose();
     super.dispose();
   }
 
-  Future<StrokeOrderAnimationController> _loadStrokeOrder(
-    String character,
-  ) async {
-    return downloadStrokeOrder(character, _httpClient).then((value) {
-      final controller = StrokeOrderAnimationController(
-        StrokeOrder(value),
-        this,
-        onQuizCompleteCallback: (summary) {
-          Fluttertoast.showToast(
-            msg: 'Quiz finished. ${summary.nTotalMistakes} mistakes',
-          );
+  Future<StrokeOrderAnimationController> _loadStrokeOrder() async {
+    const aniStroke =
+        "m 375,120 c -152,53 -245,289 -125,320 69,17 87,0 80,-75 -9,-90 15,-151 70,-180 168,-87 345,79 260,245 -13,25 -74,86 -135,135 -60,48 -116,103 -125,120 -27,51 -18,116 20,165 l 40,50 V 830 C 459,750 480,724 630,640 769,560 825,450 800,315 770,158 552,58 375,120 Z";
+    const aniMedian = [
+      Point(250, 440),
+      Point(280, 260),
+      Point(385, 150),
+      Point(520, 130),
+      Point(675, 190),
+      Point(740, 340),
+      Point(675, 515),
+      Point(490, 670),
+      Point(420, 780),
+      Point(460, 900),
+    ];
+    const ani = StrokeOrderValues([StrokeOrderValue(aniStroke, aniMedian)], []);
+    final controller = StrokeOrderAnimationController(
+      StrokeOrder(ani.toJson().toString()),
+      this,
+      onQuizCompleteCallback: (summary) {
+        Fluttertoast.showToast(
+          msg: 'Quiz finished. ${summary.nTotalMistakes} mistakes',
+        );
 
-          setState(() {});
-        },
-      );
+        setState(() {});
+      },
+    );
 
-      return controller;
-    });
+    return controller;
   }
 
   @override
@@ -75,64 +85,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: Column(
             children: [
               SizedBox(height: 50),
-              _buildCharacterInputField(),
-              SizedBox(height: 50),
               _buildStrokeOrderAnimationAndControls(),
             ],
           ),
         ),
       ),
     );
-  }
-
-  Widget _buildCharacterInputField() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _textController,
-              decoration: InputDecoration(
-                constraints: BoxConstraints(maxWidth: 320),
-                border: OutlineInputBorder(),
-                hintText: 'Enter a character',
-              ),
-              onChanged: _onTextFieldChanged,
-            ),
-            Tooltip(
-              message: copyRightDisclaimer,
-              child: Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Icon(Icons.help_outline),
-              ),
-            ),
-          ],
-        ),
-        SelectableText(
-          "Examples: ${["永", "你", "㼌", "丸", "亟", "罵"].join(', ')}",
-        ),
-      ],
-    );
-  }
-
-  void _onTextFieldChanged(String value) {
-    if (value.characters.isEmpty) {
-      return;
-    }
-
-    if (value.characters.length > 1) {
-      _textController.text = value.characters.last;
-      // Move cursor to end
-      _textController.selection = TextSelection.fromPosition(
-        TextPosition(offset: _textController.text.length),
-      );
-    }
-
-    setState(() {
-      _animationController = _loadStrokeOrder(_textController.text);
-      _animationController.then((a) => _completedController = a);
-    });
   }
 
   FutureBuilder<StrokeOrderAnimationController>
@@ -264,12 +222,3 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
-
-const copyRightDisclaimer =
-    'This package implements stroke order animations and quizzes of '
-    'Chinese characters based on the '
-    'Make me a Hanzi project '
-    '(https://github.com/skishore/makemeahanzi). '
-    'The stroke order data is available under the '
-    'ARPHIC public license '
-    '(https://www.freedesktop.org/wiki/Arphic_Public_License/).';
