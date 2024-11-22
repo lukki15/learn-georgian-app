@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:stroke_order_animator/stroke_order_animator.dart';
 import 'package:learn_georgian_app/models/stroke_order_values.dart';
+import 'package:stroke_order_animator/stroke_order_animator.dart';
+import 'package:learn_georgian_app/models/letters.dart';
 
 class StrokesOrderScaffold extends StatelessWidget {
   final String letter;
@@ -15,14 +16,15 @@ class StrokesOrderScaffold extends StatelessWidget {
         title: Text(letter),
         leading: BackButton(),
       ),
-      body: _StrokesOrder(),
+      body: letters.containsKey(letter) ? _StrokesOrder(strokeOrderValues: letters[letter]!) : Placeholder(),
     );
   }
 }
 
 
 class _StrokesOrder extends StatefulWidget {
-  const _StrokesOrder({super.key});
+  final StrokeOrderValues strokeOrderValues;
+  const _StrokesOrder({super.key, required this.strokeOrderValues});
 
   @override
   _StrokesOrderState createState() => _StrokesOrderState();
@@ -46,23 +48,8 @@ class _StrokesOrderState extends State<_StrokesOrder> with TickerProviderStateMi
   }
 
   Future<StrokeOrderAnimationController> _loadStrokeOrder() async {
-    const aniStroke =
-        "m 375,120 c -152,53 -245,289 -125,320 69,17 87,0 80,-75 -9,-90 15,-151 70,-180 168,-87 345,79 260,245 -13,25 -74,86 -135,135 -60,48 -116,103 -125,120 -27,51 -18,116 20,165 l 40,50 V 830 C 459,750 480,724 630,640 769,560 825,450 800,315 770,158 552,58 375,120 Z";
-    const aniMedian = [
-      Point(250, 440),
-      Point(280, 260),
-      Point(385, 150),
-      Point(520, 130),
-      Point(675, 190),
-      Point(740, 340),
-      Point(675, 515),
-      Point(490, 670),
-      Point(420, 780),
-      Point(460, 900),
-    ];
-    const ani = StrokeOrderValues([StrokeOrderValue(aniStroke, aniMedian)], []);
     final controller = StrokeOrderAnimationController(
-      StrokeOrder(ani.toJson().toString()),
+      StrokeOrder(widget.strokeOrderValues.toJson().toString()),
       this,
       onQuizCompleteCallback: (summary) {
         Fluttertoast.showToast(
