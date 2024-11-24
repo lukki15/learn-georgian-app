@@ -48,7 +48,7 @@ class _StrokesOrderState extends State<_StrokesOrder> with TickerProviderStateMi
   }
 
   Future<StrokeOrderAnimationController> _loadStrokeOrder() async {
-    final controller = StrokeOrderAnimationController(
+    var controller = StrokeOrderAnimationController(
       StrokeOrder(widget.strokeOrderValues.toJson().toString()),
       this,
       onQuizCompleteCallback: (summary) {
@@ -60,6 +60,9 @@ class _StrokesOrderState extends State<_StrokesOrder> with TickerProviderStateMi
       },
     );
 
+    controller.setShowBackground(true);
+    controller.setShowOutline(false);
+  
     return controller;
   }
 
