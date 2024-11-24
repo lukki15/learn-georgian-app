@@ -33,4 +33,28 @@ const _baniMedian = [
 ];
 const _bani = StrokeOrderValues([StrokeOrderValue(_baniStroke, _baniMedian)], []);
 
-const letters = {'ა': _ani, 'ბ': _bani};
+const _ganiStroke =
+"M 580,660 C 453,616 376,554 338,438 305,335 328,168 422,121 c 96,-48 201,-11 238,84 21,54 21,307 0,345 -14,25 -45,54 -65,61 -5,2 5,16 22,31 57,50 68,112 33,183 -21,52 -72,74 -126,75 -82,-4 -161,-78 -141,-157 7,-27 36,-42 61,-29 21,11 21,30 5,61 -20,39 10,77 48,90 101,19 108,-71 109,-120 0,-52 -1,-58 -26,-85 l -30,-80 c 61,-1 70,-39 70,-202 0,-150 -5,-185 -40,-219 -40,-29 -101,-35 -140,-6 -43,32 -57,89 -60,153 -3,65 6,155 40,198 23,30 43,75 130,76 L 565,620 Z";
+const _ganiMedian = [
+  Point(444, 714),
+  Point(410, 810),
+  Point(485, 880),
+  Point(600, 865),
+  Point(640, 715),
+  Point(570, 610),
+  Point(650, 520),
+  Point(630, 180),
+  Point(555, 120),
+  Point(435, 130),
+  Point(360, 235),
+  Point(385, 515),
+  Point(565, 620),
+];
+const _gani =
+    StrokeOrderValues([StrokeOrderValue(_ganiStroke, _ganiMedian)], []);
+
+const letters = {
+  'ა': _ani,
+  'ბ': _bani,
+  'გ': _gani,
+};
