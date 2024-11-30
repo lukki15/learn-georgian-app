@@ -119,6 +119,26 @@ const _viniMedian = [
 const _vini =
     StrokeOrderValues([StrokeOrderValue(_viniStroke, _viniMedian)], []);
 
+const _zeniStroke =
+    "m 530,427 c 0,263 -2,322 -76,358 -21,10 -45,15 -71,15 h -5 v 0 c -59,-1 -121,-28 -150,-72 -49,-72 -30,-178 41,-230 70,-46 149,-23 206,19 v 23 35 c -11,-20 -25,-36 -53,-50 -52,-32 -126,-15 -151,37 -19,41 -18,119 3,153 19,31 64,53 100,53 v 0 0 c 65,0 98,-36 101,-128 V 307 C 473,97 471,96 491,64 518,38 552,1 630,1 c 78,0 170,60 168,192 -7,56 -32,95 -75,116 -41,20 -89,25 -130,14 -24,-6 -21,-5 -63,-17 l 0,-26 v -40 c 25,25 59,44 95,52 82,-4 112,-38 115,-126 C 741,80 688,39 623,39 560,47 528,91 530,200 Z";
+const _zeniMedian = [
+  Point(475, 540),
+  Point(360, 490),
+  Point(260, 530),
+  Point(230, 620),
+  Point(260, 740),
+  Point(370, 790),
+  Point(490, 740),
+  Point(500, 80),
+  Point(630, 20),
+  Point(750, 80),
+  Point(750, 250),
+  Point(650, 310),
+  Point(530, 280),
+];
+const _zeni =
+    StrokeOrderValues([StrokeOrderValue(_zeniStroke, _zeniMedian)], []);
+
 const letters = {
   'ა': _ani,
   'ბ': _bani,
@@ -126,4 +146,5 @@ const letters = {
   'დ': _doni,
   'ე': _eni,
   'ვ': _vini,
+  'ზ': _zeni,
 };
