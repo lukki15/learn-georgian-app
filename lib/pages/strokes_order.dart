@@ -16,11 +16,12 @@ class StrokesOrderScaffold extends StatelessWidget {
         title: Text(letter),
         leading: BackButton(),
       ),
-      body: letters.containsKey(letter) ? _StrokesOrder(strokeOrderValues: letters[letter]!) : Placeholder(),
+      body: letters.containsKey(letter)
+          ? _StrokesOrder(strokeOrderValues: letters[letter]!)
+          : Placeholder(),
     );
   }
 }
-
 
 class _StrokesOrder extends StatefulWidget {
   final StrokeOrderValues strokeOrderValues;
@@ -30,7 +31,8 @@ class _StrokesOrder extends StatefulWidget {
   _StrokesOrderState createState() => _StrokesOrderState();
 }
 
-class _StrokesOrderState extends State<_StrokesOrder> with TickerProviderStateMixin {
+class _StrokesOrderState extends State<_StrokesOrder>
+    with TickerProviderStateMixin {
   StrokeOrderAnimationController? _completedController;
   late Future<StrokeOrderAnimationController> _animationController;
 
@@ -62,7 +64,7 @@ class _StrokesOrderState extends State<_StrokesOrder> with TickerProviderStateMi
 
     controller.setShowBackground(true);
     controller.setShowOutline(false);
-  
+
     return controller;
   }
 

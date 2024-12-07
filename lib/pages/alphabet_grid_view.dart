@@ -10,9 +10,9 @@ class AlphabetGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-  maxCrossAxisExtent: 250,
-),
-      itemCount: _letters.length, 
+        maxCrossAxisExtent: 250,
+      ),
+      itemCount: _letters.length,
       itemBuilder: (context, index) {
         String letter = _letters[index];
         return _buildLetterCard(context, letter);
@@ -23,9 +23,10 @@ class AlphabetGridView extends StatelessWidget {
   Widget _buildLetterCard(BuildContext context, String letter) {
     return GestureDetector(
       onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => StrokesOrderScaffold(letter: letter)),
-          ),
+        context,
+        MaterialPageRoute(
+            builder: (context) => StrokesOrderScaffold(letter: letter)),
+      ),
       child: Card(
         child: Center(
           child: Text(
