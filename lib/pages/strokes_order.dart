@@ -24,7 +24,7 @@ class StrokesOrderScaffold extends StatelessWidget {
 
 class _StrokesOrder extends StatefulWidget {
   final StrokeOrderValues strokeOrderValues;
-  const _StrokesOrder({super.key, required this.strokeOrderValues});
+  const _StrokesOrder({required this.strokeOrderValues});
 
   @override
   _StrokesOrderState createState() => _StrokesOrderState();
