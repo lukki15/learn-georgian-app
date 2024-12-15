@@ -158,6 +158,19 @@ const _taniMedian = [
 const _tani =
     StrokeOrderValues([StrokeOrderValue(_taniStroke, _taniMedian)], []);
 
+const _iniStroke =
+    "m 310,54 c -95,95 -83,261 25,351 169,139 420,24 420,-193 0,-69 -17,-111 -62,-158 C 646,6 626,-2 590,25 c -13,28 -15,55 19,83 44,37 62,80 62,146 0,89 -61,153 -154,162 -62,6 -108,-12 -154,-62 -25,-27 -30,-43 -30,-107 0,-71 3,-78 45,-121 C 424,77 434,49 410,25 386,1 350,13 310,54 Z";
+const _iniMedian = [
+  Point(410, 25),
+  Point(290, 170),
+  Point(320, 360),
+  Point(500, 450),
+  Point(680, 360),
+  Point(700, 170),
+  Point(590, 25),
+];
+const _ini = StrokeOrderValues([StrokeOrderValue(_iniStroke, _iniMedian)], []);
+
 const letters = {
   'ა': _ani,
   'ბ': _bani,
@@ -167,4 +180,5 @@ const letters = {
   'ვ': _vini,
   'ზ': _zeni,
   'თ': _tani,
+  'ი': _ini,
 };
