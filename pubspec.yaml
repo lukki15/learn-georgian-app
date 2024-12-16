@@ -1,16 +1,16 @@
 name: learn_georgian_app
 description: "An app that helps you learn the Georgian language."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
-  flutter: ">=3.24.0 <4.0.0"
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.27.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  fluttertoast: ^8.2.8
+  fluttertoast: ^8.2.10
   stroke_order_animator: ^3.3.0
 
 dev_dependencies:
