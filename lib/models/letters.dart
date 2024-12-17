@@ -238,6 +238,25 @@ const _maniMedian = [
 const _mani =
     StrokeOrderValues([StrokeOrderValue(_maniStroke, _maniMedian)], []);
 
+const _nariStroke =
+    "m 380,50 c -45,49 -46,70 -50,350 -4,294 0,328 50,370 24,21 32,25 70,20 88,-13 102,-5 160,0 24,9 36,18 60,20 6,-3 -3,-30 -20,-50 -29,-35 -59,-38 -130,-20 -68,18 -92,7 -120,-30 -17,-22 -17,-32 -20,-220 V 200 C 380,49 476,37 547,54 c 68,24 108,168 50,222 -51,45 -194,47 -217,-66 v 50 l 0,30 c 54,52 98,51 142,48 44,-3 143,-19 148,-138 2,-51 -3,-68 -20,-100 C 620,44 571,13 510,10 454,9 406,22 380,50 Z";
+const _nariMedian = [
+  Point(380, 260),
+  Point(450, 320),
+  Point(570, 310),
+  Point(650, 230),
+  Point(630, 100),
+  Point(540, 30),
+  Point(400, 50),
+  Point(360, 130),
+  Point(360, 700),
+  Point(430, 770),
+  Point(620, 760),
+  Point(670, 810),
+];
+const _nari =
+    StrokeOrderValues([StrokeOrderValue(_nariStroke, _nariMedian)], []);
+
 const letters = {
   'ა': _ani,
   'ბ': _bani,
@@ -251,4 +270,5 @@ const letters = {
   'კ': _kani,
   'ლ': _lasi,
   'მ': _mani,
+  'ნ': _nari,
 };
