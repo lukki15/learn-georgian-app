@@ -301,6 +301,28 @@ const _pariMedian = [
 const _pari =
     StrokeOrderValues([StrokeOrderValue(_pariStroke, _pariMedian)], []);
 
+const _zhaniStroke =
+    "m 444,26 c -39,18 -72,50 -95,93 -22,43 -24,132 -2,172 20,38 80,97 93,89 11,-7 12,-16 -11,-49 -30,-44 -39,-84 -36,-148 3,-63 15,-87 56,-118 49,-37 137,-22 164,28 13,24 15,55 17,329 l 2,302 -55,-30 -55,-30 19,-32 c 10,-18 19,-41 19,-51 0,-53 -49,-106 -100,-106 -54,0 -144,65 -144,105 0,7 2,8 4,10 5,4 19,-3 49,-31 33,-30 44,-36 71,-36 45,0 66,22 63,67 -2,28 -6,35 -26,45 -50,23 -42,40 30,66 34,13 63,32 99,65 32,30 55,46 63,43 10,-4 12,-49 12,-340 C 680,161 679,133 665,103 628,22 529,-13 444,26 Z";
+const _zhaniMedian = [
+  Point(320, 590),
+  Point(390, 520),
+  Point(470, 500),
+  Point(530, 550),
+  Point(510, 640),
+  Point(470, 660),
+  Point(580, 720),
+  Point(660, 790),
+  Point(640, 90),
+  Point(560, 30),
+  Point(470, 30),
+  Point(380, 110),
+  Point(360, 200),
+  Point(390, 310),
+  Point(440, 380),
+];
+const _zhani =
+    StrokeOrderValues([StrokeOrderValue(_zhaniStroke, _zhaniMedian)], []);
+
 const letters = {
   'ა': _ani,
   'ბ': _bani,
@@ -317,4 +339,5 @@ const letters = {
   'ნ': _nari,
   'ო': _oni,
   'პ': _pari,
+  'ჟ': _zhani,
 };
